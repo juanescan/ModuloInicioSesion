@@ -1,5 +1,8 @@
+package NuestraSenoraDeLaSabiduria.LoginBack.Servicio;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import NuestraSenoraDeLaSabiduria.LoginBack.Repositorio.UsuarioRepository;
+import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 
 @Service
 public class UsuarioService {
