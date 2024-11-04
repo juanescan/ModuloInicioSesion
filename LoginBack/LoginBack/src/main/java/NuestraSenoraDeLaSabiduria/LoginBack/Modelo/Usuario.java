@@ -1,30 +1,45 @@
 package NuestraSenoraDeLaSabiduria.LoginBack.Modelo;
 
-import lombok.Data;
-import org.springframework.data.annotation.Id;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Data
+/**
+ * Clase que representa un usuario
+ * @version 1.0
+ * @Autor Diego Chicuazuque
+ **/
+@Setter
+@Getter
 @Document(collection = "usuarios")
-public class Usuario {
+public abstract class Usuario {
 
-  @Id
   private String id;
+  private String nombreUsuario;
+  private String contrasena;
+  private String nombreCompleto;
 
-  private String nombreUsuario; // Podría ser el correo electrónico
-  private String contrasena; // La contraseña debe almacenarse encriptada
-  private String rol; // "estudiante" o "responsable"
-
-  /**
+  /*
    * Constructor de la clase
+   * @param id
    * @param nombreUsuario
    * @param contrasena
-   * @param rol
+   * @param nombreCompleto
    */
-  // Constructor, getters, y setters
-  public Usuario(String nombreUsuario, String contrasena, String rol) {
+  public Usuario(
+    String id,
+    String nombreUsuario,
+    String contrasena,
+    String nombreCompleto
+  ) {
+    this.id = id;
     this.nombreUsuario = nombreUsuario;
     this.contrasena = contrasena;
-    this.rol = rol;
+    this.nombreCompleto = nombreCompleto;
+  }
+
+  // Método común para obtener los detalles del usuario
+  public String obtenerDetallesUsuario() {
+    return "Usuario: " + nombreCompleto;
   }
 }

@@ -1,79 +1,100 @@
 package NuestraSenoraDeLaSabiduria.LoginBack.Modelo;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Clase que representa un estudiante
+ * Clase que representa un estudiante de la institución educativa
+ * @version 1.0
+ * @Autor Diego Chicuazuque
  **/
-@Data
-public class Estudiante {
+@Getter
+@Setter
+@Document(collection = "usuarios")
+public class Estudiante extends Usuario {
 
-  private String codigo;
-  private String nombreCompleto;
+  private String codigoEstudiante;
   private String curso;
   private String anoAcademico;
-  private ResponsableEconomico responsableEconomico;
+  private String responsableId;
 
-  /**
-   * Constructor de la clase
-   * @param builder
-   */
+  // Constructor privado para que solo el builder pueda crear la instancia
   private Estudiante(Builder builder) {
-    this.codigo = builder.codigo;
-    this.nombreCompleto = builder.nombreCompleto;
+    super(
+      builder.id,
+      builder.nombreUsuario,
+      builder.contrasena,
+      builder.nombreCompleto
+    );
+    this.codigoEstudiante = builder.codigoEstudiante;
     this.curso = builder.curso;
     this.anoAcademico = builder.anoAcademico;
-    this.responsableEconomico = builder.responsableEconomico;
+    this.responsableId = builder.responsableId;
   }
 
+  /*
+   * Método que retorna los detalles del estudiante
+   * @return String
+   */
+  @Override
+  public String obtenerDetallesUsuario() {
+    return (
+      super.obtenerDetallesUsuario() +
+      " - Código Estudiante: " +
+      codigoEstudiante +
+      " - Curso: " +
+      curso +
+      " - Año Académico: " +
+      anoAcademico
+    );
+  }
+
+  // Implementación del patrón Builder
   /**
-   * Método que crea un objeto de la clase Estudiante
-   * @return Estudiante
+   * Clase Builder para la creación de instancias de Estudiante
    */
   public static class Builder {
 
-    private String codigo;
+    private String id;
+    private String nombreUsuario;
+    private String contrasena;
     private String nombreCompleto;
+    private String codigoEstudiante;
     private String curso;
     private String anoAcademico;
-    private ResponsableEconomico responsableEconomico;
-
-    public Builder(
-      String codigo,
-      String nombreCompleto,
-      String curso,
-      String anoAcademico,
-      ResponsableEconomico responsable
-    ) {
-      this.codigo = codigo;
-      this.nombreCompleto = nombreCompleto;
-      this.curso = curso;
-      this.anoAcademico = anoAcademico;
-      this.responsableEconomico = responsable;
-    }
+    private String responsableId;
 
     /**
-     * Método que asigna un valor al atributo codigo
-     * @param codigo
-     * @return Builder
-     */
-    public Builder codigo(String codigo) {
-      this.codigo = codigo;
-      return this;
-    }
-
-    /**
-     * Método que asigna un valor al atributo nombreCompleto
+     * Constructor de la clase Builder
+     * @param id
+     * @param nombreUsuario
+     * @param contrasena
      * @param nombreCompleto
+     */
+    public Builder(
+      String id,
+      String nombreUsuario,
+      String contrasena,
+      String nombreCompleto
+    ) {
+      this.id = id;
+      this.nombreUsuario = nombreUsuario;
+      this.contrasena = contrasena;
+      this.nombreCompleto = nombreCompleto;
+    }
+
+    /*
+     * Métodos para asignar valores a los atributos de la clase Estudiante
+     * @param codigoEstudiante
      * @return Builder
      */
-    public Builder nombreCompleto(String nombreCompleto) {
-      this.nombreCompleto = nombreCompleto;
+    public Builder codigoEstudiante(String codigoEstudiante) {
+      this.codigoEstudiante = codigoEstudiante;
       return this;
     }
 
-    /**
-     * Método que asigna un valor al atributo curso
+    /*
      * @param curso
      * @return Builder
      */
@@ -82,8 +103,7 @@ public class Estudiante {
       return this;
     }
 
-    /**
-     * Método que asigna un valor al atributo anoAcademico
+    /*
      * @param anoAcademico
      * @return Builder
      */
@@ -92,18 +112,17 @@ public class Estudiante {
       return this;
     }
 
-    /**
-     * Método que asigna un valor al atributo responsableEconomico
-     * @param responsable
+    /*
+     * @param responsableId
      * @return Builder
      */
-    public Builder responsableEconomico(ResponsableEconomico responsable) {
-      this.responsableEconomico = responsable;
+    public Builder responsableId(String responsableId) {
+      this.responsableId = responsableId;
       return this;
     }
 
-    /**
-     * Método que crea un objeto de la clase Estudiante
+    /*
+     * Método que crea una instancia de Estudiante
      * @return Estudiante
      */
     public Estudiante build() {

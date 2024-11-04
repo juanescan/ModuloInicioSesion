@@ -1,12 +1,16 @@
 package NuestraSenoraDeLaSabiduria.LoginBack.Modelo;
 
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Clase que representa un responsable económico de un estudiante
+ * @version 1.0
+ * @Autor Diego Chicuazuque
  **/
 
 @Data
+@Document(collection = "responsablesEconomicos")
 public class ResponsableEconomico {
 
   private String nombreCompleto;
@@ -30,8 +34,7 @@ public class ResponsableEconomico {
   }
 
   /**
-   * Método que crea un objeto de la clase ResponsableEconomico
-   * @return ResponsableEconomico
+   * Método que crea un objeto de la clase ResponsableEconomico a partir de un Builder
    */
   public static class Builder {
 
