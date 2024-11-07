@@ -1,5 +1,6 @@
 package NuestraSenoraDeLaSabiduria.LoginBack.Servicio;
 
+import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Bibliotecario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Estudiante;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.ResponsableEconomico;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
@@ -35,6 +36,13 @@ public class UsuarioServicio {
   public ResponsableEconomico registrarResponsable(
     ResponsableEconomico responsable
   ) {
+    try {
+      if (validarResponsable(responsable.getCorreoElectronico())) {
+        throw new Exception("El responsable económico ya existe");
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
     return responsableEconomicoRepository.save(responsable);
   }
 
@@ -43,7 +51,7 @@ public class UsuarioServicio {
    * @param bibliotecario
    * @return Usuario
    */
-  public Usuario registrarBibliotecario(Usuario bibliotecario) {
+  public Usuario registrarBibliotecario(Bibliotecario bibliotecario) {
     return usuarioRepository.save(bibliotecario);
   }
 
@@ -65,7 +73,6 @@ public class UsuarioServicio {
     if (!usuario.getContrasena().equals(contrasena)) {
       throw new Exception("Contraseña incorrecta");
     }
-
     return usuario;
   }
 
