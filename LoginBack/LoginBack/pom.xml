@@ -65,10 +65,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>mongodb-driver-sync</artifactId>
-			<version>4.9.0</version>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version> <!-- O la versión que necesites -->
+			<scope>provided</scope>
 		</dependency>
+
 
 	</dependencies>
 

@@ -76,7 +76,7 @@ public class UsuarioServicio {
    */
   public boolean validarResponsable(String responsableCorreo) {
     if (
-      responsableEconomicoRepository.exiexistsByCorreoElectronico(
+      responsableEconomicoRepository.existsByCorreoElectronico(
         responsableCorreo
       )
     ) {

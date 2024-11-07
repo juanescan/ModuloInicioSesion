@@ -1,4 +1,4 @@
-package NuestraSenoraDeLaSabiduria.Controlador;
+package NuestraSenoraDeLaSabiduria.LoginBack.Controlador;
 
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Estudiante;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.ResponsableEconomico;

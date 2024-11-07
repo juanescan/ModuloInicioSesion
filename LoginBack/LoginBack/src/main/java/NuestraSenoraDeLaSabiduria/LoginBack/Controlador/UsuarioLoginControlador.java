@@ -1,4 +1,4 @@
-package NuestraSenoraDeLaSabiduria.Controlador;
+package NuestraSenoraDeLaSabiduria.LoginBack.Controlador;
 
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Servicio.UsuarioServicio;
