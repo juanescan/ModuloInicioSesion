@@ -19,7 +19,7 @@
             java-version: "17"
         - name: Build with Maven (compile phase only)
           run: >
-            cd moduloInicioSesion/LoginBack/LoginBack
+            cd LoginBack/LoginBack
   
             mvn compile
             
@@ -42,7 +42,7 @@
             java-version: "21"
         - name: Run tests with Maven (verify phase)
           run: >
-            cd moduloInicioSesion/LoginBack/LoginBack
+            cd LoginBack/LoginBack
   
             mvn verify
     deploy:
