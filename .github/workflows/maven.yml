@@ -16,7 +16,7 @@
         - name: Set up Maven
           uses: actions/setup-java@v1
           with:
-            java-version: "17"
+            java-version: "21"
         - name: Build with Maven (compile phase only)
           run: >
             cd LoginBack/LoginBack
@@ -29,7 +29,7 @@
           with:
             app-name: 'cvds-app'
             publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-            package: /home/runner/work/moduloInicioSesion/LoginBack/LoginBack/target/gestortareasbackend-0.0.1-SNAPSHOT.jar
+            package: /home/runner/work/moduloInicioSesion/LoginBack/LoginBack/moduloInicioSesion-0.0.1-SNAPSHOT.jar
     test:
       needs: build
       runs-on: ubuntu-latest
