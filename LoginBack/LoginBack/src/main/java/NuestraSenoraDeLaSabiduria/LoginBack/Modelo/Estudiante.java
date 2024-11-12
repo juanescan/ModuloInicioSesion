@@ -2,6 +2,7 @@ package NuestraSenoraDeLaSabiduria.LoginBack.Modelo;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @Document(collection = "usuarios")
+@TypeAlias("Estudiante")
 public class Estudiante extends Usuario {
 
   private String codigoEstudiante;
@@ -21,12 +23,7 @@ public class Estudiante extends Usuario {
 
   // Constructor privado para que solo el builder pueda crear la instancia
   private Estudiante(Builder builder) {
-    super(
-      builder.id,
-      builder.nombreUsuario,
-      builder.contrasena,
-      builder.nombreCompleto
-    );
+    super(builder.nombreUsuario, builder.contrasena, builder.nombreCompleto);
     this.codigoEstudiante = builder.codigoEstudiante;
     this.curso = builder.curso;
     this.anoAcademico = builder.anoAcademico;
@@ -56,7 +53,6 @@ public class Estudiante extends Usuario {
    */
   public static class Builder {
 
-    private String id;
     private String nombreUsuario;
     private String contrasena;
     private String nombreCompleto;
@@ -73,12 +69,10 @@ public class Estudiante extends Usuario {
      * @param nombreCompleto
      */
     public Builder(
-      String id,
       String nombreUsuario,
       String contrasena,
       String nombreCompleto
     ) {
-      this.id = id;
       this.nombreUsuario = nombreUsuario;
       this.contrasena = contrasena;
       this.nombreCompleto = nombreCompleto;

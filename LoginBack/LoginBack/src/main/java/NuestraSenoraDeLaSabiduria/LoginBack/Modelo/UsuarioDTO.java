@@ -2,25 +2,18 @@ package NuestraSenoraDeLaSabiduria.LoginBack.Modelo;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
-/**
- * Clase que representa un usuario
- * @version 1.0
- * @Autor Diego Chicuazuque
- **/
-@Setter
 @Getter
-public abstract class Usuario {
+@Setter
+public class UsuarioDTO {
 
-  @Id
   private String id;
-
   private String nombreUsuario;
   private String contrasena;
   private String nombreCompleto;
 
-  public Usuario(
+  // Constructor
+  public UsuarioDTO(
     String nombreUsuario,
     String contrasena,
     String nombreCompleto
@@ -28,9 +21,5 @@ public abstract class Usuario {
     this.nombreUsuario = nombreUsuario;
     this.contrasena = contrasena;
     this.nombreCompleto = nombreCompleto;
-  }
-
-  public String obtenerDetallesUsuario() {
-    return "Usuario: " + nombreCompleto;
   }
 }

@@ -13,5 +13,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 public interface ResponsableEconomicoRepository
   extends MongoRepository<ResponsableEconomico, String> {
-  boolean exiexistsByCorreoElectronico(String correoElectronico);
+  boolean existsByCorreoElectronico(String correoElectronico);
 }
