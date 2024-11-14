@@ -53,7 +53,6 @@ public class UsuarioServicioTest {
 
         bibliotecario = new Bibliotecario("usuarioBiblio", "password123", "Ana Gómez");
     }
-
     @Test
     void testRegistrarEstudiante() {
         when(usuarioRepository.save(estudiante)).thenReturn(estudiante);

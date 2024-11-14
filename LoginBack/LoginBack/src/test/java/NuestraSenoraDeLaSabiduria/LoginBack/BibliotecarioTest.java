@@ -1,9 +1,8 @@
-package NuestraSenoraDeLaSabiduria.LoginBack;
+package NuestraSenoraDeLaSabiduria.LoginBack.Modelo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Bibliotecario;
 import org.junit.jupiter.api.Test;
 
 public class BibliotecarioTest {
@@ -17,5 +16,6 @@ public class BibliotecarioTest {
         assertEquals("passBiblio", bibliotecario.getContrasena(), "La contraseña debería ser 'passBiblio'.");
         assertEquals("Carlos Perez", bibliotecario.getNombreCompleto(), "El nombre completo debería ser 'Carlos Perez'.");
     }
+
 
 }

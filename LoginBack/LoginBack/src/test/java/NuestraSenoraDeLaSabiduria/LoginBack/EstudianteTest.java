@@ -26,5 +26,4 @@ public class EstudianteTest {
         assertEquals("2024", estudiante.getAnoAcademico(), "El año académico debería ser '2024'.");
         assertEquals("RESP987", estudiante.getResponsableId(), "El ID del responsable debería ser 'RESP987'.");
     }
-
 }
