@@ -1,5 +1,6 @@
 import React from 'react';
 import Boton from './Boton';
+import './style.css';
 
 function PaginaPrincipal() {
   const handleLogin = () => {
