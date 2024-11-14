@@ -73,7 +73,7 @@ public class UsuarioServicioTest {
         assertEquals(responsable.getCorreoElectronico(), resultado.getCorreoElectronico());
         verify(responsableEconomicoRepository, times(1)).save(responsable);
     }
-    
+
 
     @Test
     void testRegistrarBibliotecario() {

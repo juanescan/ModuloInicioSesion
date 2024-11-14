@@ -11,7 +11,7 @@ import org.springframework.data.annotation.Id;
  **/
 @Setter
 @Getter
-public abstract class Usuario {
+public class Usuario {
 
   @Id
   private String id;
