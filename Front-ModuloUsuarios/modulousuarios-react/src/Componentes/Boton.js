@@ -1,10 +1,11 @@
 import React from 'react';
+import './style.css';
 
 function Boton({ label, onClick, style }) {
   return (
-    <Boton onClick={onClick} style={style}>
+    <button onClick={onClick} style={style}>
       {label}
-    </Boton>
+    </button>
   );
 }
 
