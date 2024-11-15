@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.ResponseEntity;
 
 class UsuarioRegistrarControladorTest {
 
@@ -45,7 +46,7 @@ class UsuarioRegistrarControladorTest {
   }
 
   @Test
-  void testRegistrarResponsableEconomico() {
+  void testRegistrarResponsableEconomico() throws Exception {
     // Configuración de datos de prueba
     ResponsableEconomicoDTO responsableEconomicoDTO = new ResponsableEconomicoDTO(
       "pepitoPerez",
@@ -74,7 +75,7 @@ class UsuarioRegistrarControladorTest {
       .thenReturn(responsableEconomico);
 
     // Llamada al método de prueba
-    ResponsableEconomico resultado = usuarioRegistrarControlador.registrarResponsableEconomico(
+    ResponseEntity<String> resultado = usuarioRegistrarControlador.registrarResponsableEconomico(
       responsableEconomicoDTO
     );
 
@@ -118,7 +119,7 @@ class UsuarioRegistrarControladorTest {
       .thenReturn(estudiante);
 
     // Llamada al método de prueba
-    Usuario resultado = usuarioRegistrarControlador.registrarEstudiante(
+    ResponseEntity<String> resultado = usuarioRegistrarControlador.registrarEstudiante(
       estudianteDTO
     );
 
@@ -149,7 +150,7 @@ class UsuarioRegistrarControladorTest {
       .thenReturn(bibliotecario);
 
     // Llamada al método de prueba
-    Usuario resultado = usuarioRegistrarControlador.registrarBibliotecario(
+    ResponseEntity<String> resultado = usuarioRegistrarControlador.registrarBibliotecario(
       bibliotecarioDTO
     );
 

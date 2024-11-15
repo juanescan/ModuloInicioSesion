@@ -8,6 +8,8 @@ import static org.mockito.Mockito.when;
 import NuestraSenoraDeLaSabiduria.LoginBack.Controlador.UsuarioLoginControlador;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Servicio.UsuarioServicio;
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -43,7 +45,10 @@ class UsuarioLoginControladorTest {
       .thenReturn(usuarioLogueado);
 
     // Llamada al método de prueba
-    ResponseEntity<?> response = usuarioLoginControlador.login(usuario);
+    Map<String, String> loginData = new HashMap<>();
+    loginData.put("nombreUsuario", usuario.getNombreUsuario());
+    loginData.put("contrasena", usuario.getContrasena());
+    ResponseEntity<?> response = usuarioLoginControlador.login(loginData);
 
     // Verificación de la respuesta
     assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -63,7 +68,10 @@ class UsuarioLoginControladorTest {
       .loginUsuario(anyString(), anyString());
 
     // Llamada al método de prueba
-    ResponseEntity<?> response = usuarioLoginControlador.login(usuario);
+    Map<String, String> loginData = new HashMap<>();
+    loginData.put("nombreUsuario", usuario.getNombreUsuario());
+    loginData.put("contrasena", usuario.getContrasena());
+    ResponseEntity<?> response = usuarioLoginControlador.login(loginData);
 
     // Verificación de la respuesta
     assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());

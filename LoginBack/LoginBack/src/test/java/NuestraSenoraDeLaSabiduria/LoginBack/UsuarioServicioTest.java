@@ -68,7 +68,7 @@ public class UsuarioServicioTest {
   }
 
   @Test
-  void testRegistrarResponsableCuandoNoExiste() {
+  void testRegistrarResponsableCuandoNoExiste() throws Exception {
     when(
       responsableEconomicoRepository.existsByCorreoElectronico(
         responsable.getCorreoElectronico()
