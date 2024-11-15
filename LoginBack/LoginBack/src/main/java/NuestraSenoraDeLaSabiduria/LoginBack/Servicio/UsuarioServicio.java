@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 /**
  * Servicio para la entidad Usuario (Estudiante y Bibliotecario)
  *
- * @version 1.0
+ * @version 1.1
  * @Autor Diego Chicuazuque
  */
 @Service
@@ -61,11 +61,10 @@ public class UsuarioServicio {
    */
   public Usuario loginUsuario(String nombreUsuario, String contrasena)
     throws Exception {
-    System.out.println("Buscando usuario: " + nombreUsuario);
     // Verificar si el usuario existe
     Usuario usuario = usuarioRepository
       .findByNombreUsuario(nombreUsuario)
-      .orElseThrow(() -> new Exception("Usuario no encontrado 3"));
+      .orElseThrow(() -> new Exception("Usuario no encontrado"));
     // Verificar si la contraseña es correcta
     if (!usuario.getContrasena().equals(contrasena)) {
       throw new Exception("Contraseña incorrecta");

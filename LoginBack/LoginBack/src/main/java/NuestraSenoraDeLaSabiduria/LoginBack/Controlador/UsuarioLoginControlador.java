@@ -40,7 +40,8 @@ public class UsuarioLoginControlador {
   public ResponseEntity<?> login(@RequestBody Map<String, String> requestBody) {
     String nombreUsuario = requestBody.get("nombreUsuario");
     String contrasena = requestBody.get("contrasena");
-
+    // Se hizo asi porque no se puede hacer un login con un objeto Usuario
+    // ademas de que no se puede recibir 2 parametros en un metodo GET
     try {
       Usuario usuarioLogueado = usuarioServicio.loginUsuario(
         nombreUsuario,

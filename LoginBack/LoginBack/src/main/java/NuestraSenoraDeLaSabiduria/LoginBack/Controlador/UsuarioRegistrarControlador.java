@@ -144,11 +144,19 @@ public class UsuarioRegistrarControlador {
     }
   }
 
+  /**
+   * Obtener todos los usuarios
+   * @return List<Usuario>
+   */
   @GetMapping("/obtenerUsuario")
   public List<Usuario> obtenerUsuarios() {
     return usuarioServicio.listarUsuarios();
   }
 
+  /**
+   * Obtener todos los responsables economicos
+   * @return List<ResponsableEconomico>
+   */
   @GetMapping("/obtenerResponsables")
   public List<ResponsableEconomico> obtenerResponsables() {
     return usuarioServicio.listarResponsables();

@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Clase que representa un estudiante de la institución educativa
- * @version 1.0
+ * @version 1.1
  * @Autor Diego Chicuazuque
  **/
 @Getter
