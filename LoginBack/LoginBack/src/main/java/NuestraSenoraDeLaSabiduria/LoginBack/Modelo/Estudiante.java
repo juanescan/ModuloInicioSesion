@@ -2,12 +2,13 @@ package NuestraSenoraDeLaSabiduria.LoginBack.Modelo;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * Clase que representa un estudiante de la institución educativa
- * @version 1.0
+ * @version 1.1
  * @Autor Diego Chicuazuque
  **/
 @Getter
@@ -20,6 +21,30 @@ public class Estudiante extends Usuario {
   private String curso;
   private String anoAcademico;
   private String responsableId;
+
+  // Constructor
+  // esta etiqueta es para que Spring Data pueda instanciar el objeto
+  // con el constructor que se le indica en el parámetro de la anotación
+  // en este caso, se le indica que utilice el constructor que recibe todos los atributos
+  // para poder instanciar el objeto con los valores que se obtienen de la base de datos
+  //suppression deprecation es para que no muestre advertencias de que el método está obsoleto
+  @SuppressWarnings("deprecation")
+  @PersistenceConstructor
+  public Estudiante(
+    String nombreUsuario,
+    String contrasena,
+    String nombreCompleto,
+    String codigoEstudiante,
+    String curso,
+    String anoAcademico,
+    String responsableId
+  ) {
+    super(nombreUsuario, contrasena, nombreCompleto);
+    this.codigoEstudiante = codigoEstudiante;
+    this.curso = curso;
+    this.anoAcademico = anoAcademico;
+    this.responsableId = responsableId;
+  }
 
   // Constructor privado para que solo el builder pueda crear la instancia
   private Estudiante(Builder builder) {

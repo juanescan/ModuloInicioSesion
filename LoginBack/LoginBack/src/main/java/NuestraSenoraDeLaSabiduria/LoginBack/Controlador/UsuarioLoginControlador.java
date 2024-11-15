@@ -2,10 +2,13 @@ package NuestraSenoraDeLaSabiduria.LoginBack.Controlador;
 
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Servicio.UsuarioServicio;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Controlador para la entidad Usuario
  *
- * @version 1.0
+ * @version 1.1
  * @Autor Diego Chicuazuque
  */
 @RestController
@@ -30,20 +33,40 @@ public class UsuarioLoginControlador {
   /**
    * Login de un usuario
    * @param usuario
-   * @return ResponseEntity
+   * @return ResponseEntity con el usuario logueado o un mensaje de error
+   * @throws Exception
    */
-  @PostMapping("/login")
-  public ResponseEntity<?> login(@RequestBody Usuario usuario) {
+  @GetMapping("/login")
+  public ResponseEntity<?> login(@RequestBody Map<String, String> requestBody) {
+    String nombreUsuario = requestBody.get("nombreUsuario");
+    String contrasena = requestBody.get("contrasena");
+    // Se hizo asi porque no se puede hacer un login con un objeto Usuario
+    // ademas de que no se puede recibir 2 parametros en un metodo GET
     try {
       Usuario usuarioLogueado = usuarioServicio.loginUsuario(
-        usuario.getNombreUsuario(),
-        usuario.getContrasena()
+        nombreUsuario,
+        contrasena
       );
-      return ResponseEntity.ok(usuarioLogueado);
+
+      // Obtener el tipo de usuario a partir de la clase en la cual se encuentra un
+      // @TypeAlias
+      String tipoUsuario = usuarioLogueado.getClass().getSimpleName();
+
+      // Crear el mapa de respuesta
+      Map<String, String> response = new HashMap<>();
+      response.put("nombreUsuario", usuarioLogueado.getNombreUsuario());
+      response.put("tipoUsuario", tipoUsuario);
+
+      return ResponseEntity.ok(response);
     } catch (Exception e) {
       return ResponseEntity
         .status(HttpStatus.UNAUTHORIZED)
-        .body("Error de autenticación: " + e.getMessage());
+        .body(
+          Collections.singletonMap(
+            "error",
+            "Error de autenticación: " + e.getMessage()
+          )
+        );
     }
   }
 }

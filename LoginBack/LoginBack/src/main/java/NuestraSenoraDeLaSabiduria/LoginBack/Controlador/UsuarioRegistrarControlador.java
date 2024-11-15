@@ -8,7 +8,11 @@ import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.ResponsableEconomico;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.ResponsableEconomicoDTO;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Servicio.UsuarioServicio;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Controlador para la entidad Usuario
  *
- * @version 1.0
+ * @version 1.1
  * @Autor Diego Chicuazuque
  */
 @RestController
@@ -51,47 +55,67 @@ public class UsuarioRegistrarControlador {
 
   /**
    * Registrar un responsable economico
-   * @param responsableEconomico
+   * @param responsableEconomicoDTO
    * @return ResponseEntity
    */
   @PostMapping("/registrarResponsableEconomico")
-  public ResponsableEconomico registrarResponsableEconomico(
+  public ResponseEntity<String> registrarResponsableEconomico(
     @RequestBody ResponsableEconomicoDTO responsableEconomicoDTO
   ) {
-    ResponsableEconomico responsableEconomico = ResponsableEconomico
-      .builder()
-      .nombreCompleto(responsableEconomicoDTO.getNombreCompleto())
-      .correoElectronico(responsableEconomicoDTO.getCorreoElectronico())
-      .telefono(responsableEconomicoDTO.getTelefono())
-      .direccion(responsableEconomicoDTO.getDireccion())
-      .documentoIdentificacion(
-        responsableEconomicoDTO.getDocumentoIdentificacion()
-      )
-      .build();
-    return usuarioServicio.registrarResponsable(responsableEconomico);
+    try {
+      ResponsableEconomico responsableEconomico = ResponsableEconomico
+        .builder()
+        .nombreCompleto(responsableEconomicoDTO.getNombreCompleto())
+        .correoElectronico(responsableEconomicoDTO.getCorreoElectronico())
+        .telefono(responsableEconomicoDTO.getTelefono())
+        .direccion(responsableEconomicoDTO.getDireccion())
+        .documentoIdentificacion(
+          responsableEconomicoDTO.getDocumentoIdentificacion()
+        )
+        .build();
+      usuarioServicio.registrarResponsable(responsableEconomico);
+      return ResponseEntity
+        .status(HttpStatus.CREATED)
+        .body("Responsable económico registrado exitosamente");
+    } catch (Exception e) {
+      return ResponseEntity
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body("Error al registrar responsable económico: " + e.getMessage());
+    }
   }
 
   /**
    * Registrar un estudiante
    * @param estudiante
    * @return ResponseEntity
+   * @throws Exception  si hay un error al registrar el estudiante se lanza una excepcion
    */
   @PostMapping("/registrarEstudiante")
-  public Usuario registrarEstudiante(@RequestBody EstudianteDTO estudianteDTO) {
+  public ResponseEntity<String> registrarEstudiante(
+    @RequestBody EstudianteDTO estudianteDTO
+  ) {
     // Aqui se llamo al builder de la clase Estudiante para crear un objeto de tipo Estudiante
     // caso contrario que en los otros que se uso builder ya que en los otros se uso el que es propio de lombok
-    Estudiante estudiante = new Estudiante.Builder(
-      estudianteDTO.getNombreUsuario(),
-      estudianteDTO.getContrasena(),
-      estudianteDTO.getNombreCompleto()
-    )
-      .codigoEstudiante(estudianteDTO.getCodigoEstudiante())
-      .curso(estudianteDTO.getCurso())
-      .anoAcademico(estudianteDTO.getAnoAcademico())
-      .responsableId(estudianteDTO.getResponsableId())
-      .build();
-
-    return usuarioServicio.registrarEstudiante(estudiante);
+    try {
+      Estudiante estudiante = new Estudiante.Builder(
+        estudianteDTO.getNombreUsuario(),
+        estudianteDTO.getContrasena(),
+        estudianteDTO.getNombreCompleto()
+      )
+        .codigoEstudiante(estudianteDTO.getCodigoEstudiante())
+        .curso(estudianteDTO.getCurso())
+        .anoAcademico(estudianteDTO.getAnoAcademico())
+        .responsableId(estudianteDTO.getResponsableId())
+        .build();
+      usuarioServicio.registrarEstudiante(estudiante);
+      return ResponseEntity
+        .status(HttpStatus.CREATED)
+        .body("Estudiante registrado exitosamente");
+    } catch (Exception e) {
+      return ResponseEntity
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body("Error al registrar estudiante: " + e.getMessage());
+    }
   }
 
   /**
@@ -100,14 +124,41 @@ public class UsuarioRegistrarControlador {
    * @return ResponseEntity
    */
   @PostMapping("/registrarBibliotecario")
-  public Usuario registrarBibliotecario(
+  public ResponseEntity<String> registrarBibliotecario(
     @RequestBody BibliotecarioDTO bibliotecarioDTO
   ) {
-    Bibliotecario bibliotecario = new Bibliotecario(
-      bibliotecarioDTO.getNombreUsuario(),
-      bibliotecarioDTO.getContrasena(),
-      bibliotecarioDTO.getNombreCompleto()
-    );
-    return usuarioServicio.registrarBibliotecario(bibliotecario);
+    try {
+      Bibliotecario bibliotecario = new Bibliotecario(
+        bibliotecarioDTO.getNombreUsuario(),
+        bibliotecarioDTO.getContrasena(),
+        bibliotecarioDTO.getNombreCompleto()
+      );
+      usuarioServicio.registrarBibliotecario(bibliotecario);
+      return ResponseEntity
+        .status(HttpStatus.CREATED)
+        .body("Bibliotecario registrado exitosamente");
+    } catch (Exception e) {
+      return ResponseEntity
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body("Error al registrar bibliotecario: " + e.getMessage());
+    }
+  }
+
+  /**
+   * Obtener todos los usuarios
+   * @return List<Usuario>
+   */
+  @GetMapping("/obtenerUsuario")
+  public List<Usuario> obtenerUsuarios() {
+    return usuarioServicio.listarUsuarios();
+  }
+
+  /**
+   * Obtener todos los responsables economicos
+   * @return List<ResponsableEconomico>
+   */
+  @GetMapping("/obtenerResponsables")
+  public List<ResponsableEconomico> obtenerResponsables() {
+    return usuarioServicio.listarResponsables();
   }
 }

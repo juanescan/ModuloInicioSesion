@@ -6,13 +6,14 @@ import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.ResponsableEconomico;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Repositorio.ResponsableEconomicoRepository;
 import NuestraSenoraDeLaSabiduria.LoginBack.Repositorio.UsuarioRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
  * Servicio para la entidad Usuario (Estudiante y Bibliotecario)
  *
- * @version 1.0
+ * @version 1.1
  * @Autor Diego Chicuazuque
  */
 @Service
@@ -35,13 +36,9 @@ public class UsuarioServicio {
 
   public ResponsableEconomico registrarResponsable(
     ResponsableEconomico responsable
-  ) {
-    try {
-      if (validarResponsable(responsable.getCorreoElectronico())) {
-        throw new Exception("El responsable económico ya existe");
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
+  ) throws Exception {
+    if (validarResponsable(responsable.getCorreoElectronico())) {
+      throw new Exception("El responsable económico ya existe");
     }
     return responsableEconomicoRepository.save(responsable);
   }
@@ -68,7 +65,6 @@ public class UsuarioServicio {
     Usuario usuario = usuarioRepository
       .findByNombreUsuario(nombreUsuario)
       .orElseThrow(() -> new Exception("Usuario no encontrado"));
-
     // Verificar si la contraseña es correcta
     if (!usuario.getContrasena().equals(contrasena)) {
       throw new Exception("Contraseña incorrecta");
@@ -90,5 +86,21 @@ public class UsuarioServicio {
       return true;
     }
     return false;
+  }
+
+  /**
+   * Listar todos los usuarios
+   * @return List<Usuario>
+   */
+  public List<Usuario> listarUsuarios() {
+    return usuarioRepository.findAll();
+  }
+
+  /**
+   * Lista de todos los responsables económicos
+   * @return List<ResponsableEconomico>
+   */
+  public List<ResponsableEconomico> listarResponsables() {
+    return responsableEconomicoRepository.findAll();
   }
 }
