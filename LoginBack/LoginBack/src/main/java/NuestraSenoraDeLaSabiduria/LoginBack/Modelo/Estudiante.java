@@ -28,6 +28,17 @@ public class Estudiante extends Usuario {
   // en este caso, se le indica que utilice el constructor que recibe todos los atributos
   // para poder instanciar el objeto con los valores que se obtienen de la base de datos
   //suppression deprecation es para que no muestre advertencias de que el método está obsoleto
+  /**
+   * Constructor de la clase Estudiante
+   * @param nombreUsuario
+   * @param contrasena
+   * @param nombreCompleto
+   * @param codigoEstudiante
+   * @param curso
+   * @param anoAcademico
+   * @param responsableId
+   *
+   */
   @SuppressWarnings("deprecation")
   @PersistenceConstructor
   public Estudiante(
