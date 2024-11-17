@@ -1,5 +1,6 @@
 package NuestraSenoraDeLaSabiduria.LoginBack.Servicio;
 
+import NuestraSenoraDeLaSabiduria.LoginBack.Excepciones.Excepciones;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Bibliotecario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Estudiante;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.ResponsableEconomico;
@@ -38,7 +39,7 @@ public class UsuarioServicio {
     ResponsableEconomico responsable
   ) throws Exception {
     if (validarResponsable(responsable.getCorreoElectronico())) {
-      throw new Exception("El responsable económico ya existe");
+      throw new Excepciones(Excepciones.USUARIO_EXISTENTE);
     }
     return responsableEconomicoRepository.save(responsable);
   }
@@ -64,17 +65,17 @@ public class UsuarioServicio {
     // Verificar si el usuario existe
     Usuario usuario = usuarioRepository
       .findByNombreUsuario(nombreUsuario)
-      .orElseThrow(() -> new Exception("Usuario no encontrado"));
+      .orElseThrow(() -> new Excepciones(Excepciones.USUARIO_INEXISTENTE));
     // Verificar si la contraseña es correcta
     if (!usuario.getContrasena().equals(contrasena)) {
-      throw new Exception("Contraseña incorrecta");
+      throw new Excepciones(Excepciones.LOGIN_INVALIDO);
     }
     return usuario;
   }
 
   /**
    * Validar si un responsable económico ya existe
-   * @param responsable
+   * @param responsableCorreo
    * @return boolean
    */
   public boolean validarResponsable(String responsableCorreo) {

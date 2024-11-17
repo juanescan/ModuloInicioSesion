@@ -3,6 +3,7 @@ package NuestraSenoraDeLaSabiduria.LoginBack;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import NuestraSenoraDeLaSabiduria.LoginBack.Excepciones.Excepciones;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Bibliotecario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Estudiante;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.ResponsableEconomico;
@@ -16,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -123,7 +125,7 @@ public class UsuarioServicioTest {
         usuarioServicio.loginUsuario("usuarioEstudiante", "incorrecta");
       }
     );
-    assertEquals("Contraseña incorrecta", exception.getMessage());
+    assertEquals("El login no es valido los datos no son validos", exception.getMessage());
   }
 
   @Test
@@ -146,5 +148,24 @@ public class UsuarioServicioTest {
     )
       .thenReturn(false);
     assertFalse(usuarioServicio.validarResponsable("carlos.lopez@example.com"));
+  }
+
+  @Test
+  public void testLoginUsuarioSuccess() throws Exception {
+    Usuario mockUsuario = new Usuario("testUser", "testPass", "Test User");
+    when(usuarioRepository.findByNombreUsuario("testUser")).thenReturn(Optional.of(mockUsuario));
+
+    Usuario result = usuarioServicio.loginUsuario("testUser", "testPass");
+
+    assertEquals("testUser", result.getNombreUsuario());
+  }
+
+  @Test
+  public void testLoginUsuarioFailure() {
+    when(usuarioRepository.findByNombreUsuario("testUser")).thenReturn(Optional.empty());
+
+    assertThrows(Excepciones.class, () -> {
+      usuarioServicio.loginUsuario("testUser", "testPass");
+    });
   }
 }

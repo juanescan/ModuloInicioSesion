@@ -1,5 +1,6 @@
 package NuestraSenoraDeLaSabiduria.LoginBack.Controlador;
 
+import NuestraSenoraDeLaSabiduria.LoginBack.Excepciones.Excepciones;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Servicio.UsuarioServicio;
 import java.util.Collections;
@@ -8,10 +9,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controlador para la entidad Usuario
@@ -30,43 +28,28 @@ public class UsuarioLoginControlador {
     this.usuarioServicio = usuarioServicio;
   }
 
-  /**
-   * Login de un usuario
-   * @param usuario
-   * @return ResponseEntity con el usuario logueado o un mensaje de error
-   * @throws Exception
-   */
-  @GetMapping("/login")
+  // Con estos cambios, el metodo login ahora utiliza
+  // @PostMapping, lo cual es más apropiado para recibir
+  // datos en el cuerpo de la solicitud.
+  @PostMapping("/login")
   public ResponseEntity<?> login(@RequestBody Map<String, String> requestBody) {
     String nombreUsuario = requestBody.get("nombreUsuario");
     String contrasena = requestBody.get("contrasena");
-    // Se hizo asi porque no se puede hacer un login con un objeto Usuario
-    // ademas de que no se puede recibir 2 parametros en un metodo GET
     try {
-      Usuario usuarioLogueado = usuarioServicio.loginUsuario(
-        nombreUsuario,
-        contrasena
-      );
-
-      // Obtener el tipo de usuario a partir de la clase en la cual se encuentra un
-      // @TypeAlias
+      Usuario usuarioLogueado = usuarioServicio.loginUsuario(nombreUsuario, contrasena);
       String tipoUsuario = usuarioLogueado.getClass().getSimpleName();
-
-      // Crear el mapa de respuesta
       Map<String, String> response = new HashMap<>();
       response.put("nombreUsuario", usuarioLogueado.getNombreUsuario());
       response.put("tipoUsuario", tipoUsuario);
-
       return ResponseEntity.ok(response);
+    } catch (Excepciones e) {
+      return ResponseEntity
+              .status(HttpStatus.UNAUTHORIZED)
+              .body(Collections.singletonMap("error", "Error de autenticación: " + e.getMessage()));
     } catch (Exception e) {
       return ResponseEntity
-        .status(HttpStatus.UNAUTHORIZED)
-        .body(
-          Collections.singletonMap(
-            "error",
-            "Error de autenticación: " + e.getMessage()
-          )
-        );
+              .status(HttpStatus.INTERNAL_SERVER_ERROR)
+              .body(Collections.singletonMap("error", "Error interno del servidor: " + e.getMessage()));
     }
   }
 }
