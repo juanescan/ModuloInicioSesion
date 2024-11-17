@@ -66,3 +66,36 @@
     font-size: 1.8rem;
   }
   
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+  }
+  
+  .login-form label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+  }
+  
+  .login-form button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-form button:hover {
+    background-color: #0056b3;
+  }
+  
