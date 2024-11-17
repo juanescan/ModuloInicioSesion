@@ -74,7 +74,7 @@ class UsuarioRegistrarControladorTest {
     when(usuarioServicio.registrarResponsable(any(ResponsableEconomico.class)))
       .thenReturn(responsableEconomico);
 
-    // Llamada al método de prueba
+    // Llamada al metodo de prueba
     ResponseEntity<String> resultado = usuarioRegistrarControlador.registrarResponsableEconomico(
       responsableEconomicoDTO
     );
