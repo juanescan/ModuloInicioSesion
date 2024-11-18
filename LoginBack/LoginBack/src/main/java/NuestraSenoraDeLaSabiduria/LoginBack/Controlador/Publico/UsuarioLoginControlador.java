@@ -1,4 +1,4 @@
-package NuestraSenoraDeLaSabiduria.LoginBack.Controlador;
+package NuestraSenoraDeLaSabiduria.LoginBack.Controlador.Publico;
 
 import NuestraSenoraDeLaSabiduria.LoginBack.Excepciones.Excepciones;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
@@ -9,7 +9,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Controlador para la entidad Usuario
@@ -18,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
  * @Autor Diego Chicuazuque
  */
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/acceder")
 public class UsuarioLoginControlador {
 
   @Autowired
@@ -31,12 +34,15 @@ public class UsuarioLoginControlador {
   // Con estos cambios, el metodo login ahora utiliza
   // @PostMapping, lo cual es más apropiado para recibir
   // datos en el cuerpo de la solicitud.
-  @PostMapping("/login")
+  @PostMapping("/")
   public ResponseEntity<?> login(@RequestBody Map<String, String> requestBody) {
     String nombreUsuario = requestBody.get("nombreUsuario");
     String contrasena = requestBody.get("contrasena");
     try {
-      Usuario usuarioLogueado = usuarioServicio.loginUsuario(nombreUsuario, contrasena);
+      Usuario usuarioLogueado = usuarioServicio.loginUsuario(
+        nombreUsuario,
+        contrasena
+      );
       String tipoUsuario = usuarioLogueado.getClass().getSimpleName();
       Map<String, String> response = new HashMap<>();
       response.put("nombreUsuario", usuarioLogueado.getNombreUsuario());
@@ -44,12 +50,22 @@ public class UsuarioLoginControlador {
       return ResponseEntity.ok(response);
     } catch (Excepciones e) {
       return ResponseEntity
-              .status(HttpStatus.UNAUTHORIZED)
-              .body(Collections.singletonMap("error", "Error de autenticación: " + e.getMessage()));
+        .status(HttpStatus.UNAUTHORIZED)
+        .body(
+          Collections.singletonMap(
+            "error",
+            "Error de autenticación: " + e.getMessage()
+          )
+        );
     } catch (Exception e) {
       return ResponseEntity
-              .status(HttpStatus.INTERNAL_SERVER_ERROR)
-              .body(Collections.singletonMap("error", "Error interno del servidor: " + e.getMessage()));
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body(
+          Collections.singletonMap(
+            "error",
+            "Error interno del servidor: " + e.getMessage()
+          )
+        );
     }
   }
 }

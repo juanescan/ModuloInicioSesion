@@ -1,4 +1,4 @@
-package NuestraSenoraDeLaSabiduria.LoginBack.Controlador;
+package NuestraSenoraDeLaSabiduria.LoginBack.Controlador.Publico;
 
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Bibliotecario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.BibliotecarioDTO;
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Autor Diego Chicuazuque
  */
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/registrar")
 public class UsuarioRegistrarControlador {
 
   @Autowired

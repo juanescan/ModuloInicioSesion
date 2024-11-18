@@ -5,7 +5,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
-import NuestraSenoraDeLaSabiduria.LoginBack.Controlador.UsuarioLoginControlador;
+import NuestraSenoraDeLaSabiduria.LoginBack.Controlador.Publico.UsuarioLoginControlador;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Servicio.UsuarioServicio;
 import java.util.HashMap;

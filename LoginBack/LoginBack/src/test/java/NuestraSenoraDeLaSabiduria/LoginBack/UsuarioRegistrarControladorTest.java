@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-import NuestraSenoraDeLaSabiduria.LoginBack.Controlador.UsuarioRegistrarControlador;
+import NuestraSenoraDeLaSabiduria.LoginBack.Controlador.Publico.UsuarioRegistrarControlador;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.*;
 import NuestraSenoraDeLaSabiduria.LoginBack.Servicio.UsuarioServicio;
 import org.junit.jupiter.api.BeforeEach;
