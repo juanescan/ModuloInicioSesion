@@ -62,7 +62,6 @@ public class UsuarioServicio {
    */
   public AuthResponse registrarBibliotecario(Bibliotecario bibliotecario) {
     usuarioRepository.save(bibliotecario);
-    System.out.println(bibliotecario.obtenerDetallesUsuario());
     return AuthResponse
       .builder()
       .token(jwtService.getToken(bibliotecario))
@@ -89,6 +88,7 @@ public class UsuarioServicio {
     }
     return AuthResponse
       .builder()
+      .token(jwtService.getToken(usuario))
       .rol(usuario.getClass().getSimpleName())
       .build();
   }

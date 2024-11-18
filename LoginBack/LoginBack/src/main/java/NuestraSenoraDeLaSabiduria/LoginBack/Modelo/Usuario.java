@@ -5,6 +5,7 @@ import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,7 +24,9 @@ public class Usuario implements UserDetails {
   @Id
   private String id;
 
+  @Indexed(unique = true)
   private String nombreUsuario;
+
   private String contrasena;
   private String nombreCompleto;
 

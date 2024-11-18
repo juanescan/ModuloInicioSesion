@@ -13,7 +13,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtService {
 
-  private static final String SECRET_KEY = "your-256-bit-secret-key";
+  private static final String SECRET_KEY =
+    "u83Dq5fKqgPiWxjF6qK9eA5D6L8F9yCzA6Z7P2D3r4kLf9HqA7J6kQ3V2eWx5H9K";
 
   public String getToken(Usuario usuario) {
     return getToken(new HashMap<>(), usuario);
@@ -32,7 +33,6 @@ public class JwtService {
 
   private Key getKey() {
     byte[] secretBytes = java.util.Base64.getDecoder().decode(SECRET_KEY);
-    System.out.println("algo");
     return Keys.hmacShaKeyFor(secretBytes);
   }
 }
