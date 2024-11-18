@@ -1,6 +1,8 @@
 package NuestraSenoraDeLaSabiduria.LoginBack.Servicio;
 
+import NuestraSenoraDeLaSabiduria.LoginBack.Controlador.AuthResponse;
 import NuestraSenoraDeLaSabiduria.LoginBack.Excepciones.Excepciones;
+import NuestraSenoraDeLaSabiduria.LoginBack.Jwt.JwtService;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Bibliotecario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Estudiante;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.ResponsableEconomico;
@@ -8,6 +10,7 @@ import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Repositorio.ResponsableEconomicoRepository;
 import NuestraSenoraDeLaSabiduria.LoginBack.Repositorio.UsuarioRepository;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +21,13 @@ import org.springframework.stereotype.Service;
  * @Autor Diego Chicuazuque
  */
 @Service
+@RequiredArgsConstructor
 public class UsuarioServicio {
 
   @Autowired
-  private UsuarioRepository usuarioRepository;
+  private final UsuarioRepository usuarioRepository;
+
+  private final JwtService jwtService;
 
   @Autowired
   private ResponsableEconomicoRepository responsableEconomicoRepository;
@@ -31,8 +37,13 @@ public class UsuarioServicio {
    * @param estudiante
    * @return Usuario
    */
-  public Usuario registrarEstudiante(Estudiante estudiante) {
-    return usuarioRepository.save(estudiante);
+  public AuthResponse registrarEstudiante(Estudiante estudiante) {
+    usuarioRepository.save(estudiante);
+    return AuthResponse
+      .builder()
+      .token(jwtService.getToken(estudiante))
+      .rol("Estudiante")
+      .build();
   }
 
   public ResponsableEconomico registrarResponsable(
@@ -49,8 +60,13 @@ public class UsuarioServicio {
    * @param bibliotecario
    * @return Usuario
    */
-  public Usuario registrarBibliotecario(Bibliotecario bibliotecario) {
-    return usuarioRepository.save(bibliotecario);
+  public AuthResponse registrarBibliotecario(Bibliotecario bibliotecario) {
+    usuarioRepository.save(bibliotecario);
+    return AuthResponse
+      .builder()
+      .token(jwtService.getToken(bibliotecario))
+      .rol("Bibliotecario")
+      .build();
   }
 
   /**
@@ -60,7 +76,7 @@ public class UsuarioServicio {
    * @return Usuario
    * @throws Exception
    */
-  public Usuario loginUsuario(String nombreUsuario, String contrasena)
+  public AuthResponse loginUsuario(String nombreUsuario, String contrasena)
     throws Exception {
     // Verificar si el usuario existe
     Usuario usuario = usuarioRepository
@@ -70,7 +86,11 @@ public class UsuarioServicio {
     if (!usuario.getContrasena().equals(contrasena)) {
       throw new Excepciones(Excepciones.LOGIN_INVALIDO);
     }
-    return usuario;
+    return AuthResponse
+      .builder()
+      .token(jwtService.getToken(usuario))
+      .rol(usuario.getClass().getSimpleName())
+      .build();
   }
 
   /**

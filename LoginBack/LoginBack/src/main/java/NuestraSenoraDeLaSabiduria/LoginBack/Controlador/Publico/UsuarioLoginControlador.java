@@ -1,10 +1,8 @@
-package NuestraSenoraDeLaSabiduria.LoginBack.Controlador;
+package NuestraSenoraDeLaSabiduria.LoginBack.Controlador.Publico;
 
 import NuestraSenoraDeLaSabiduria.LoginBack.Excepciones.Excepciones;
-import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Servicio.UsuarioServicio;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,20 +34,27 @@ public class UsuarioLoginControlador {
     String nombreUsuario = requestBody.get("nombreUsuario");
     String contrasena = requestBody.get("contrasena");
     try {
-      Usuario usuarioLogueado = usuarioServicio.loginUsuario(nombreUsuario, contrasena);
-      String tipoUsuario = usuarioLogueado.getClass().getSimpleName();
-      Map<String, String> response = new HashMap<>();
-      response.put("nombreUsuario", usuarioLogueado.getNombreUsuario());
-      response.put("tipoUsuario", tipoUsuario);
-      return ResponseEntity.ok(response);
+      return ResponseEntity.ok(
+        usuarioServicio.loginUsuario(nombreUsuario, contrasena)
+      );
     } catch (Excepciones e) {
       return ResponseEntity
-              .status(HttpStatus.UNAUTHORIZED)
-              .body(Collections.singletonMap("error", "Error de autenticación: " + e.getMessage()));
+        .status(HttpStatus.UNAUTHORIZED)
+        .body(
+          Collections.singletonMap(
+            "error",
+            "Error de autenticación: " + e.getMessage()
+          )
+        );
     } catch (Exception e) {
       return ResponseEntity
-              .status(HttpStatus.INTERNAL_SERVER_ERROR)
-              .body(Collections.singletonMap("error", "Error interno del servidor: " + e.getMessage()));
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body(
+          Collections.singletonMap(
+            "error",
+            "Error interno del servidor: " + e.getMessage()
+          )
+        );
     }
   }
 }
