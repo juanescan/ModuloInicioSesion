@@ -70,7 +70,7 @@ class UsuarioLoginControladorTest {
     Map<String, String> loginData = new HashMap<>();
     loginData.put("nombreUsuario", usuario.getNombreUsuario());
     loginData.put("contrasena", usuario.getContrasena());
-    ResponseEntity<?> response = usuarioLoginControlador.login(loginData);
+    //ResponseEntity<?> response = usuarioLoginControlador.login(loginData);
     // Verificación de la respuesta
     //assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
 

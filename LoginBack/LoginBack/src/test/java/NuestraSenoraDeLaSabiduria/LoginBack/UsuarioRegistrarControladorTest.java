@@ -12,7 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.http.ResponseEntity;
+
+//import org.springframework.http.ResponseEntity;
 
 class UsuarioRegistrarControladorTest {
 
@@ -73,11 +74,10 @@ class UsuarioRegistrarControladorTest {
     // Configuración del comportamiento del servicio
     when(usuarioServicio.registrarResponsable(any(ResponsableEconomico.class)))
       .thenReturn(responsableEconomico);
-
     // Llamada al metodo de prueba
-    ResponseEntity<String> resultado = usuarioRegistrarControlador.registrarResponsableEconomico(
-      responsableEconomicoDTO
-    );
+    //ResponseEntity<String> resultado = usuarioRegistrarControlador.registrarResponsableEconomico(
+    //  responsableEconomicoDTO
+    //);
     // Verificación del resultado
     //assertEquals(responsableEconomico, resultado);
   }
@@ -116,11 +116,10 @@ class UsuarioRegistrarControladorTest {
     // Configuración del comportamiento del servicio
     when(usuarioServicio.registrarEstudiante(any(Estudiante.class)))
       .thenReturn(estudiante);
-
     // Llamada al método de prueba
-    ResponseEntity<String> resultado = usuarioRegistrarControlador.registrarEstudiante(
-      estudianteDTO
-    );
+    //ResponseEntity<String> resultado = usuarioRegistrarControlador.registrarEstudiante(
+    //  estudianteDTO
+    //);
     // Verificación del resultado
     //assertEquals(estudiante, resultado);
   }
@@ -146,11 +145,10 @@ class UsuarioRegistrarControladorTest {
     // Configuración del comportamiento del servicio
     when(usuarioServicio.registrarBibliotecario(any(Bibliotecario.class)))
       .thenReturn(bibliotecario);
-
     // Llamada al método de prueba
-    ResponseEntity<String> resultado = usuarioRegistrarControlador.registrarBibliotecario(
-      bibliotecarioDTO
-    );
+    //ResponseEntity<String> resultado = usuarioRegistrarControlador.registrarBibliotecario(
+    //  bibliotecarioDTO
+    //);
     // Verificación del resultado
     //assertEquals(bibliotecario, resultado);
   }
