@@ -42,3 +42,7 @@ Este proyecto implementa un sistema de gestión de usuarios en una institución 
 
 4. **Configuración de Seguridad:**
    El sistema garantiza que solo los usuarios con un token válido y el rol adecuado puedan acceder a las rutas protegidas.
+
+## Referencias 
+- https://youtu.be/nwqQYCM4YT8?si=gusMGC7BaH6vzVoh
+- https://github.com/irojascorsico/spring-boot-jwt-authentication.git
