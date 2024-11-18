@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
@@ -125,7 +124,10 @@ public class UsuarioServicioTest {
         usuarioServicio.loginUsuario("usuarioEstudiante", "incorrecta");
       }
     );
-    assertEquals("El login no es valido los datos no son validos", exception.getMessage());
+    assertEquals(
+      "El login no es valido los datos no son validos",
+      exception.getMessage()
+    );
   }
 
   @Test
@@ -153,7 +155,8 @@ public class UsuarioServicioTest {
   @Test
   public void testLoginUsuarioSuccess() throws Exception {
     Usuario mockUsuario = new Usuario("testUser", "testPass", "Test User");
-    when(usuarioRepository.findByNombreUsuario("testUser")).thenReturn(Optional.of(mockUsuario));
+    when(usuarioRepository.findByNombreUsuario("testUser"))
+      .thenReturn(Optional.of(mockUsuario));
 
     Usuario result = usuarioServicio.loginUsuario("testUser", "testPass");
 
@@ -162,10 +165,14 @@ public class UsuarioServicioTest {
 
   @Test
   public void testLoginUsuarioFailure() {
-    when(usuarioRepository.findByNombreUsuario("testUser")).thenReturn(Optional.empty());
+    when(usuarioRepository.findByNombreUsuario("testUser"))
+      .thenReturn(Optional.empty());
 
-    assertThrows(Excepciones.class, () -> {
-      usuarioServicio.loginUsuario("testUser", "testPass");
-    });
+    assertThrows(
+      Excepciones.class,
+      () -> {
+        usuarioServicio.loginUsuario("testUser", "testPass");
+      }
+    );
   }
 }
