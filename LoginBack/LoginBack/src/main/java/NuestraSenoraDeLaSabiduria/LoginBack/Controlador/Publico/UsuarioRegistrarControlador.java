@@ -1,5 +1,6 @@
-package NuestraSenoraDeLaSabiduria.LoginBack.Controlador;
+package NuestraSenoraDeLaSabiduria.LoginBack.Controlador.Publico;
 
+import NuestraSenoraDeLaSabiduria.LoginBack.Controlador.AuthResponse;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Bibliotecario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.BibliotecarioDTO;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Estudiante;
@@ -9,6 +10,7 @@ import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.ResponsableEconomicoDTO;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Servicio.UsuarioServicio;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,18 +28,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/usuario")
+@RequiredArgsConstructor
 public class UsuarioRegistrarControlador {
 
   @Autowired
   private UsuarioServicio usuarioServicio;
-
-  /**
-   * Constructor de la clase
-   * @param usuarioServicio
-   */
-  public UsuarioRegistrarControlador(UsuarioServicio usuarioServicio) {
-    this.usuarioServicio = usuarioServicio;
-  }
 
   //Este metodo esta violando el principo de que el front solo debe mostrar la informacion y
   //no debe tener logica de negocio, de momento se deja el metodo con posibilidad de cambiar en un futuro
@@ -91,7 +86,7 @@ public class UsuarioRegistrarControlador {
    * @throws Exception  si hay un error al registrar el estudiante se lanza una excepcion
    */
   @PostMapping("/registrarEstudiante")
-  public ResponseEntity<String> registrarEstudiante(
+  public ResponseEntity<AuthResponse> registrarEstudiante(
     @RequestBody EstudianteDTO estudianteDTO
   ) {
     // Aqui se llamo al builder de la clase Estudiante para crear un objeto de tipo Estudiante
@@ -107,14 +102,13 @@ public class UsuarioRegistrarControlador {
         .anoAcademico(estudianteDTO.getAnoAcademico())
         .responsableId(estudianteDTO.getResponsableId())
         .build();
-      usuarioServicio.registrarEstudiante(estudiante);
-      return ResponseEntity
-        .status(HttpStatus.CREATED)
-        .body("Estudiante registrado exitosamente");
+
+      return ResponseEntity.ok(usuarioServicio.registrarEstudiante(estudiante));
     } catch (Exception e) {
+      AuthResponse authResponse = new AuthResponse();
       return ResponseEntity
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .body("Error al registrar estudiante: " + e.getMessage());
+        .body(authResponse);
     }
   }
 
@@ -124,7 +118,7 @@ public class UsuarioRegistrarControlador {
    * @return ResponseEntity
    */
   @PostMapping("/registrarBibliotecario")
-  public ResponseEntity<String> registrarBibliotecario(
+  public ResponseEntity<AuthResponse> registrarBibliotecario(
     @RequestBody BibliotecarioDTO bibliotecarioDTO
   ) {
     try {
@@ -133,14 +127,15 @@ public class UsuarioRegistrarControlador {
         bibliotecarioDTO.getContrasena(),
         bibliotecarioDTO.getNombreCompleto()
       );
-      usuarioServicio.registrarBibliotecario(bibliotecario);
-      return ResponseEntity
-        .status(HttpStatus.CREATED)
-        .body("Bibliotecario registrado exitosamente");
+
+      return ResponseEntity.ok(
+        usuarioServicio.registrarBibliotecario(bibliotecario)
+      );
     } catch (Exception e) {
+      AuthResponse authResponse = new AuthResponse();
       return ResponseEntity
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .body("Error al registrar bibliotecario: " + e.getMessage());
+        .body(authResponse);
     }
   }
 

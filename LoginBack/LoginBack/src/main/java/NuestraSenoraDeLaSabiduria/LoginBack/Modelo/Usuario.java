@@ -1,8 +1,14 @@
 package NuestraSenoraDeLaSabiduria.LoginBack.Modelo;
 
+import java.util.Collection;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * Clase que representa un usuario
@@ -11,7 +17,8 @@ import org.springframework.data.annotation.Id;
  **/
 @Setter
 @Getter
-public class Usuario {
+@Document(collection = "usuarios")
+public class Usuario implements UserDetails {
 
   @Id
   private String id;
@@ -32,5 +39,20 @@ public class Usuario {
 
   public String obtenerDetallesUsuario() {
     return "Usuario: " + nombreCompleto;
+  }
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return List.of(new SimpleGrantedAuthority(this.getClass().getSimpleName()));
+  }
+
+  @Override
+  public String getPassword() {
+    return contrasena;
+  }
+
+  @Override
+  public String getUsername() {
+    return nombreUsuario;
   }
 }
