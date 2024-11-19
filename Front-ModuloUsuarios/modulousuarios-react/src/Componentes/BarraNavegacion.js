@@ -11,7 +11,7 @@ function Navbar() {
   };
 
   const handleRegister = () => {
-    alert('Registrarse');
+    navigate('/FormularioRegistro');
   };
 
   return (
