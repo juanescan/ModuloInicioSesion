@@ -6,7 +6,14 @@ import Boton from './Boton';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 
-const FormularioRegistro = () => {
+function FormularioRegistro() {
+
+  const navigate = useNavigate();
+
+  const handlePrincipal = () => {
+    navigate('/App');
+  };
+
   const [formulario, setFormulario] = useState({
     codigoEstudiante: '',
     nombreEstudiante: '',
