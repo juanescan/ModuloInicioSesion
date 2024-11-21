@@ -241,7 +241,6 @@ function FormularioRegistro() {
         onChange={manejarCambio}
         required
       />
-      {/* Agregar el componente de reCAPTCHA */}
       <div className="captcha-container">
         <ReCAPTCHA
           sitekey="6LcD-YQqAAAAAKmisLvpnV7EHvNoN7w-ZDUYpJsA"
