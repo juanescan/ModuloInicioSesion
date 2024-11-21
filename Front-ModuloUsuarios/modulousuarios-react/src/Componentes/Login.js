@@ -1,42 +1,28 @@
 import React, { useState } from 'react';
 import './style.css';
+import ReCAPTCHA from 'react-google-recaptcha';
+import Boton from './Boton';
 
 function Login() {
-  const [captchaQuestion, setCaptchaQuestion] = useState('');
-  const [captchaAnswer, setCaptchaAnswer] = useState('');
   const [userAnswer, setUserAnswer] = useState('');
-  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+  const [captchaValido, setCaptchaValido] = useState(false);
 
-  // Generar una nueva pregunta CAPTCHA
-  const generateCaptcha = () => {
-    const num1 = Math.floor(Math.random() * 10) + 1;
-    const num2 = Math.floor(Math.random() * 10) + 1;
-    setCaptchaQuestion(`${num1} + ${num2}`);
-    setCaptchaAnswer((num1 + num2).toString());
-    setUserAnswer('');
-    setIsCaptchaValid(false);
+  const manejarCaptcha = (value) => {
+    if (value) {
+      setCaptchaValido(true);
+    }
   };
 
   // Validar respuesta del usuario
   const handleCaptchaInput = (e) => {
     const value = e.target.value;
     setUserAnswer(value);
-    setIsCaptchaValid(value === captchaAnswer);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!isCaptchaValid) {
-      alert('Por favor resuelve correctamente el CAPTCHA');
-      return;
-    }
     alert('Inicio de sesión exitoso');
   };
-
-  // Generar CAPTCHA al cargar el componente
-  React.useEffect(() => {
-    generateCaptcha();
-  }, []);
 
   return (
     <div className="login-container">
@@ -51,19 +37,25 @@ function Login() {
           <input type="password" name="password" required />
         </label>
         <div className="captcha-container">
-          <label>
-            Resuelve: {captchaQuestion}
-            <input
-              type="text"
-              value={userAnswer}
-              onChange={handleCaptchaInput}
-              required
-            />
-          </label>
+          <div className="captcha-container">
+        <ReCAPTCHA
+          sitekey="6LcD-YQqAAAAAKmisLvpnV7EHvNoN7w-ZDUYpJsA"
+          onChange={manejarCaptcha}
+        />
+      </div>
         </div>
-        <button type="submit" disabled={!isCaptchaValid}>
-          Ingresar
-        </button>
+          <Boton 
+          label="Ingresar" 
+          type="submit"
+          style={{
+            backgroundColor: 'blue',
+            color: 'white',
+            padding: '10px 20px',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: captchaValido ? 'pointer' : 'not-allowed',
+          }}
+        />
       </form>
     </div>
   );

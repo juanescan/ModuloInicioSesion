@@ -3,6 +3,7 @@ import CampoTexto from './CampoTexto';
 import ListaDesplegable from './ListaDesplegable';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Boton from './Boton';
+import { useNavigate } from 'react-router-dom';
 import './style.css';
 
 const FormularioRegistro = () => {
@@ -83,7 +84,12 @@ const FormularioRegistro = () => {
   const todosCamposLlenos = () => {
     return Object.values(formulario).every((campo) => campo !== '');
   };
-
+  function NavBar(){
+    const navigate = useNavigate();
+  const handlePrincipal = () => {
+    navigate('/PaginaPrincipal');
+  };
+  }
   const validarCorreo = (correo) => {
     const regexCorreo = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!regexCorreo.test(correo)) {
@@ -231,14 +237,14 @@ const FormularioRegistro = () => {
       {/* Agregar el componente de reCAPTCHA */}
       <div className="captcha-container">
         <ReCAPTCHA
-          sitekey="6LcMWIUqAAAAADRQtIApdj5i4Cq9kaA00SfDULHK"
+          sitekey="6LcD-YQqAAAAAKmisLvpnV7EHvNoN7w-ZDUYpJsA"
           onChange={manejarCaptcha}
         />
       </div>
       <div className="form-buttons">
       <Boton 
           label="Registrar" 
-          type="submit"
+          onClick={handlePrincipal}
           disabled={!todosCamposLlenos() || !captchaValido}
           style={{
             backgroundColor: 'blue',
