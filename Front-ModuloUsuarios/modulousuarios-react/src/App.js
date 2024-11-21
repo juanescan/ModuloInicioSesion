@@ -5,6 +5,7 @@ import Encabezado from './Componentes/Encabezado';
 import Contenido from './Componentes/Contenido';
 import Login from './Componentes/Login';
 import './Componentes/style.css';
+import FormularioRegistro from './Componentes/FormularioRegistro';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="/FormularioRegistro" element={<FormularioRegistro />} />
         </Routes>
       </div>
     </Router>
