@@ -1,4 +1,4 @@
-package NuestraSenoraDeLaSabiduria.LoginBack.Controlador.Publico;
+package NuestraSenoraDeLaSabiduria.LoginBack.Controlador.Privado;
 
 import NuestraSenoraDeLaSabiduria.LoginBack.Controlador.AuthResponse;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Bibliotecario;
@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Autor Diego Chicuazuque
  */
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarioPrivado")
 @RequiredArgsConstructor
 public class UsuarioRegistrarControlador {
 

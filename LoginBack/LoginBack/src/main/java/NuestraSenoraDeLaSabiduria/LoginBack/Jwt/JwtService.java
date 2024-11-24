@@ -1,13 +1,16 @@
 package NuestraSenoraDeLaSabiduria.LoginBack.Jwt;
 
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Usuario;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import java.security.Key;
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -34,5 +37,38 @@ public class JwtService {
   private Key getKey() {
     byte[] secretBytes = java.util.Base64.getDecoder().decode(SECRET_KEY);
     return Keys.hmacShaKeyFor(secretBytes);
+  }
+
+  public boolean isTokenValid(String token, UserDetails userDetails) {
+    final String username = getUserNameFromToken(token);
+    return (
+      username.equals(userDetails.getUsername()) && !isTokenExpired(token)
+    );
+  }
+
+  public String getUserNameFromToken(String token) {
+    return getClaim(token, Claims::getSubject);
+  }
+
+  private Claims getAllClaimsFromToken(String token) {
+    return Jwts
+      .parserBuilder()
+      .setSigningKey(getKey())
+      .build()
+      .parseClaimsJws(token)
+      .getBody();
+  }
+
+  public <T> T getClaim(String token, Function<Claims, T> claimsResolve) {
+    final Claims claims = getAllClaimsFromToken(token);
+    return claimsResolve.apply(claims);
+  }
+
+  private Date getExpiration(String token) {
+    return getClaim(token, Claims::getExpiration);
+  }
+
+  private boolean isTokenExpired(String token) {
+    return getExpiration(token).before(new Date(System.currentTimeMillis()));
   }
 }
