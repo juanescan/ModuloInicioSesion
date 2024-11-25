@@ -19,7 +19,7 @@ function App() {
             path="/"
             element={
               <>
-                <BarraNavegacion titulo="" botones={botonesPaginaPrincipal} />
+                <BarraNavegacion botones={botonesPaginaPrincipal} />
                 <Encabezado />"
                 <Contenido />
               </>

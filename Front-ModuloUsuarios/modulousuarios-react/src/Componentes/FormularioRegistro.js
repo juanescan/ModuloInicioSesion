@@ -52,6 +52,15 @@ function FormularioRegistro() {
     Once: ['1101', '1102', '1103'],
   };
 
+  const ciudadesColombia = [
+    'Arauca', 'Armenia', 'Barranquilla', 'Bogotá D.C', 'Bucaramanga', 'Cali',
+    'Cartagena', 'Cúcuta', 'Florencia', 'Inírida', 'Ibagué', 'Leticia',
+    'Manizales', 'Medellín', 'Mitú', 'Mocoa', 'Montería', 'Neiva',
+    'Pasto', 'Pereira', 'Popayán', 'Puerto Carreño', 'Quibdó',
+    'Riohacha', 'San Andrés', 'Santa Marta', 'Sincelejo', 'Tunja', 'Valledupar',
+    'Villavicencio', 'Yopal', 'Otro'
+  ];
+
   useEffect(() => {
     const gradoSeleccionado = formulario.grado;
     setOpcionesCurso(cursosPorPrefijo[gradoSeleccionado] || []);
@@ -59,7 +68,19 @@ function FormularioRegistro() {
 
   const manejarCambio = (e) => {
     const { name, value } = e.target;
-    setFormulario({ ...formulario, [name]: value });
+
+    if (
+      ['numeroDocumentoEstudiante', 'documentoResponsable', 'telefonoResponsable'].includes(name) &&
+      !/^\d*$/.test(value)
+    ) {
+      return;
+    }
+    
+    if (name === 'lugarExpedicionResponsable' && value !== 'Otro') {
+      setFormulario({ ...formulario, otraCiudad: '', [name]: value });
+    } else {
+      setFormulario({ ...formulario, [name]: value });
+    }
 
     if (name === 'correoResponsable') {
       validarCorreo(value);
@@ -136,16 +157,24 @@ function FormularioRegistro() {
         />
       </div>
       <CampoTexto
+        label="Nombre del Estudiante"
+        name="nombreEstudiante"
+        value={formulario.nombreEstudiante}
+        onChange={manejarCambio}
+        required
+      />
+      <CampoTexto
         label="Código del Estudiante"
         name="codigoEstudiante"
         value={formulario.codigoEstudiante}
         onChange={manejarCambio}
         required
-      />
-      <CampoTexto
-        label="Nombre del Estudiante"
-        name="nombreEstudiante"
-        value={formulario.nombreEstudiante}
+      />      
+      <ListaDesplegable
+        label="Tipo de Documento"
+        name="tipoDocumentoEstudiante"
+        opciones={[ 'REGISTRO CIVIL', 'TI', 'CÉDULA']}
+        value={formulario.tipoDocumentoEstudiante}
         onChange={manejarCambio}
         required
       />
@@ -156,55 +185,7 @@ function FormularioRegistro() {
         onChange={manejarCambio}
         required
       />
-      <ListaDesplegable
-        label="Tipo de Documento"
-        name="tipoDocumentoEstudiante"
-        opciones={[ 'REGISTRO CIVIL', 'TI', 'CÉDULA'
-        ]}
-        value={formulario.tipoDocumentoEstudiante}
-        onChange={manejarCambio}
-        required
-      />
-      <CampoTexto
-        label="Nombre del Responsable Económico"
-        name="nombreResponsable"
-        value={formulario.nombreResponsable}
-        onChange={manejarCambio}
-        required
-      />
-      <CampoTexto
-        label="Documento del Responsable Económico"
-        name="documentoResponsable"
-        value={formulario.documentoResponsable}
-        onChange={manejarCambio}
-        required
-      />
-      <CampoTexto
-        label="Lugar de Expedición"
-        name="lugarExpedicionResponsable"
-        value={formulario.lugarExpedicionResponsable}
-        onChange={manejarCambio}
-        required
-      />
-      <CampoTexto
-        label="Teléfono del Responsable Económico"
-        name="telefonoResponsable"
-        value={formulario.telefonoResponsable}
-        onChange={manejarCambio}
-        required
-      />
-      <CampoTexto
-        label="Correo del Responsable Económico"
-        name="correoResponsable"
-        value={formulario.correoResponsable}
-        onChange={manejarCambio}
-        required
-        type="email"
-      />
-      {errores.correoResponsable && (
-        <div className="advertencia-correo">{errores.correoResponsable}</div>
-      )}
-      <ListaDesplegable
+       <ListaDesplegable
         label="Grado"
         name="grado"
         opciones={[ 'Prejardín', 'Jardín', 'Transición',
@@ -225,6 +206,56 @@ function FormularioRegistro() {
           required
         />
       )}
+      <CampoTexto
+        label="Nombre del Responsable Económico"
+        name="nombreResponsable"
+        value={formulario.nombreResponsable}
+        onChange={manejarCambio}
+        required
+      />
+      <CampoTexto
+        label="Número de documento del Responsable Económico"
+        name="documentoResponsable"
+        value={formulario.documentoResponsable}
+        onChange={manejarCambio}
+        required
+      />
+      <ListaDesplegable
+        label="Ciudad de expedición del documento"
+        name="lugarExpedicionResponsable"
+        opciones={ciudadesColombia}
+        value={formulario.lugarExpedicionResponsable}
+        onChange={manejarCambio}
+        required
+      />
+      {formulario.lugarExpedicionResponsable === 'Otro' && (
+        <CampoTexto
+          label="Especifica otra ciudad"
+          name="otraCiudad"
+          value={formulario.otraCiudad}
+          onChange={manejarCambio}
+          required
+        />
+      )}
+      <CampoTexto
+        label="Teléfono del Responsable Económico"
+        name="telefonoResponsable"
+        value={formulario.telefonoResponsable}
+        onChange={manejarCambio}
+        required
+      />
+      <CampoTexto
+        label="Correo del Responsable Económico"
+        name="correoResponsable"
+        value={formulario.correoResponsable}
+        onChange={manejarCambio}
+        required
+        type="email"
+      />
+      {errores.correoResponsable && (
+        <div className="advertencia-correo">{errores.correoResponsable}</div>
+      )}
+     
       <CampoTexto
         label="Contraseña"
         name="contrasena"
