@@ -24,6 +24,9 @@ public class JwtService {
   }
 
   private String getToken(Map<String, Object> extraClaim, Usuario usuario) {
+    System.out.print(
+      "Generando token para el usuario: " + usuario.getNombreUsuario()
+    );
     return Jwts
       .builder()
       .setClaims(extraClaim)
@@ -35,8 +38,7 @@ public class JwtService {
   }
 
   private Key getKey() {
-    byte[] secretBytes = java.util.Base64.getDecoder().decode(SECRET_KEY);
-    return Keys.hmacShaKeyFor(secretBytes);
+    return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
   }
 
   public boolean isTokenValid(String token, UserDetails userDetails) {
@@ -69,6 +71,6 @@ public class JwtService {
   }
 
   private boolean isTokenExpired(String token) {
-    return getExpiration(token).before(new Date(System.currentTimeMillis()));
+    return getExpiration(token).before(new Date());
   }
 }

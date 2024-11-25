@@ -37,13 +37,9 @@ public class UsuarioServicio {
    * @param estudiante
    * @return Usuario
    */
-  public AuthResponse registrarEstudiante(Estudiante estudiante) {
+  public String registrarEstudiante(Estudiante estudiante) {
     usuarioRepository.save(estudiante);
-    return AuthResponse
-      .builder()
-      .token(jwtService.getToken(estudiante))
-      .rol("Estudiante")
-      .build();
+    return "Estudiante registrado";
   }
 
   public ResponsableEconomico registrarResponsable(
@@ -60,13 +56,9 @@ public class UsuarioServicio {
    * @param bibliotecario
    * @return Usuario
    */
-  public AuthResponse registrarBibliotecario(Bibliotecario bibliotecario) {
+  public String registrarBibliotecario(Bibliotecario bibliotecario) {
     usuarioRepository.save(bibliotecario);
-    return AuthResponse
-      .builder()
-      .token(jwtService.getToken(bibliotecario))
-      .rol("Bibliotecario")
-      .build();
+    return "Bibliotecario registrado";
   }
 
   /**
@@ -79,6 +71,7 @@ public class UsuarioServicio {
   public AuthResponse loginUsuario(String nombreUsuario, String contrasena)
     throws Exception {
     // Verificar si el usuario existe
+    System.out.println("Buscando usuario: " + nombreUsuario);
     Usuario usuario = usuarioRepository
       .findByNombreUsuario(nombreUsuario)
       .orElseThrow(() -> new Excepciones(Excepciones.USUARIO_INEXISTENTE));
@@ -90,6 +83,7 @@ public class UsuarioServicio {
       .builder()
       .token(jwtService.getToken(usuario))
       .rol(usuario.getClass().getSimpleName())
+      .nombreUsuario(usuario.getNombreUsuario())
       .build();
   }
 

@@ -19,7 +19,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
   private final JwtService jwtService;
   private final UserDetailsService userDetailsService;
 
-  @SuppressWarnings("null")
   @Override
   protected void doFilterInternal(
     jakarta.servlet.http.HttpServletRequest request,
@@ -29,21 +28,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     final String token = getTokenFromRequest(request);
     final String username;
 
-    if (token != null) {
+    if (token == null || !StringUtils.hasText(token)) {
       filterChain.doFilter(request, response);
       return;
     }
+
     username = jwtService.getUserNameFromToken(token);
 
     if (
       username != null &&
       SecurityContextHolder.getContext().getAuthentication() == null
     ) {
-      final UserDetails userDetails = userDetailsService.loadUserByUsername(
-        username
-      );
+      UserDetails userDetails = userDetailsService.loadUserByUsername(username);
       if (jwtService.isTokenValid(token, userDetails)) {
-        final UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
           userDetails,
           null,
           userDetails.getAuthorities()
