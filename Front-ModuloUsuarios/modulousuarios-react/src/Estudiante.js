@@ -7,27 +7,25 @@ import './Componentes/style.css';
 
 function Estudiante() {
   const botonesEstudiante = [
-    { label: 'Salir', link: '/App', color: '#28A745' },
+    { label: 'Salir', link: '/', color: '#28A745' },
   ];
 
   return (
-    <Router>
       <div className="Estudiante">
         <Routes>
           <Route
             path="/"
             element={
               <>
-                <BarraNavegacion titulo="ESTUDIANTE" botones={botonesEstudiante} />
-                <Encabezado />"
+                <BarraNavegacion titulo = {"ESTUDIANTE"} botones={botonesEstudiante} />
+                <Encabezado />
                 <Contenido />
               </>
             }
           />
-          <Route path="/App" element={<App />} />
+          <Route path="/" />
         </Routes>
       </div>
-    </Router>
   );
 }
 
