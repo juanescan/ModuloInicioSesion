@@ -1,6 +1,5 @@
-package NuestraSenoraDeLaSabiduria.LoginBack.Controlador.Publico;
+package NuestraSenoraDeLaSabiduria.LoginBack.Controlador.Privado;
 
-import NuestraSenoraDeLaSabiduria.LoginBack.Controlador.AuthResponse;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Bibliotecario;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.BibliotecarioDTO;
 import NuestraSenoraDeLaSabiduria.LoginBack.Modelo.Estudiante;
@@ -86,7 +85,7 @@ public class UsuarioRegistrarControlador {
    * @throws Exception  si hay un error al registrar el estudiante se lanza una excepcion
    */
   @PostMapping("/registrarEstudiante")
-  public ResponseEntity<AuthResponse> registrarEstudiante(
+  public ResponseEntity<String> registrarEstudiante(
     @RequestBody EstudianteDTO estudianteDTO
   ) {
     // Aqui se llamo al builder de la clase Estudiante para crear un objeto de tipo Estudiante
@@ -105,10 +104,9 @@ public class UsuarioRegistrarControlador {
 
       return ResponseEntity.ok(usuarioServicio.registrarEstudiante(estudiante));
     } catch (Exception e) {
-      AuthResponse authResponse = new AuthResponse();
       return ResponseEntity
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .body(authResponse);
+        .body("Error al registrar estudiante: " + e.getMessage());
     }
   }
 
@@ -118,7 +116,7 @@ public class UsuarioRegistrarControlador {
    * @return ResponseEntity
    */
   @PostMapping("/registrarBibliotecario")
-  public ResponseEntity<AuthResponse> registrarBibliotecario(
+  public ResponseEntity<String> registrarBibliotecario(
     @RequestBody BibliotecarioDTO bibliotecarioDTO
   ) {
     try {
@@ -132,10 +130,9 @@ public class UsuarioRegistrarControlador {
         usuarioServicio.registrarBibliotecario(bibliotecario)
       );
     } catch (Exception e) {
-      AuthResponse authResponse = new AuthResponse();
       return ResponseEntity
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .body(authResponse);
+        .body("Error al registrar bibliotecario: " + e.getMessage());
     }
   }
 
@@ -145,6 +142,7 @@ public class UsuarioRegistrarControlador {
    */
   @GetMapping("/obtenerUsuario")
   public List<Usuario> obtenerUsuarios() {
+    System.out.println("Obteniendo usuarios");
     return usuarioServicio.listarUsuarios();
   }
 
