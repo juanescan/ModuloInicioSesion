@@ -26,6 +26,8 @@ public class SecurityConfig {
         authorizeRequests
           .requestMatchers("/usuario/login")
           .permitAll()
+          .requestMatchers("/validador/validar")
+          .permitAll()
           .anyRequest()
           .authenticated()
       )

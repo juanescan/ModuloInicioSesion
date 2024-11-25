@@ -24,9 +24,6 @@ public class JwtService {
   }
 
   private String getToken(Map<String, Object> extraClaim, Usuario usuario) {
-    System.out.print(
-      "Generando token para el usuario: " + usuario.getNombreUsuario()
-    );
     return Jwts
       .builder()
       .setClaims(extraClaim)

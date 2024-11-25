@@ -70,8 +70,6 @@ public class UsuarioServicio {
    */
   public AuthResponse loginUsuario(String nombreUsuario, String contrasena)
     throws Exception {
-    // Verificar si el usuario existe
-    System.out.println("Buscando usuario: " + nombreUsuario);
     Usuario usuario = usuarioRepository
       .findByNombreUsuario(nombreUsuario)
       .orElseThrow(() -> new Excepciones(Excepciones.USUARIO_INEXISTENTE));
