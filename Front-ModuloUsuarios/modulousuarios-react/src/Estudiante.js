@@ -3,33 +3,32 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BarraNavegacion from './Componentes/BarraNavegacion';
 import Encabezado from './Componentes/Encabezado';
 import Contenido from './Componentes/Contenido';
-import Login from './Componentes/Login';
 import './Componentes/style.css';
 
-function App() {
-  const botonesPaginaPrincipal = [
-    { label: 'Log in', link: '/login', color: '#007BFF' },
+function Estudiante() {
+  const botonesEstudiante = [
+    { label: 'Salir', link: '/App', color: '#28A745' },
   ];
 
   return (
     <Router>
-      <div className="App">
+      <div className="Estudiante">
         <Routes>
           <Route
             path="/"
             element={
               <>
-                <BarraNavegacion titulo="" botones={botonesPaginaPrincipal} />
+                <BarraNavegacion titulo="ESTUDIANTE" botones={botonesEstudiante} />
                 <Encabezado />"
                 <Contenido />
               </>
             }
           />
-          <Route path="/login" element={<Login />} />
+          <Route path="/App" element={<App />} />
         </Routes>
       </div>
     </Router>
   );
 }
 
-export default App;
+export default Estudiante;

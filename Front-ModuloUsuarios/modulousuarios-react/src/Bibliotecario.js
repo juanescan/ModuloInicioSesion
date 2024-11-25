@@ -3,33 +3,35 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BarraNavegacion from './Componentes/BarraNavegacion';
 import Encabezado from './Componentes/Encabezado';
 import Contenido from './Componentes/Contenido';
-import Login from './Componentes/Login';
 import './Componentes/style.css';
+import FormularioRegistro from './Componentes/FormularioRegistro';
 
-function App() {
-  const botonesPaginaPrincipal = [
-    { label: 'Log in', link: '/login', color: '#007BFF' },
+function Bibliotecario() {
+  const botonesBibliotecario = [
+    { label: 'Registrar estudiante', link: '/FormularioRegistro', color: '#28A745' },
+    { label: 'Salir', link: '/App', color: '#28A745' },
   ];
 
   return (
     <Router>
-      <div className="App">
+      <div className="Bibliotecario">
         <Routes>
           <Route
             path="/"
             element={
               <>
-                <BarraNavegacion titulo="" botones={botonesPaginaPrincipal} />
+                <BarraNavegacion titulo="BIBLIOTECARIO" botones={botonesBibliotecario} />
                 <Encabezado />"
                 <Contenido />
               </>
             }
           />
-          <Route path="/login" element={<Login />} />
+          <Route path="/FormularioRegistro" element={<FormularioRegistro />} />
+          <Route path="/App" element={<App />} />
         </Routes>
       </div>
     </Router>
   );
 }
 
-export default App;
+export default Bibliotecario;
