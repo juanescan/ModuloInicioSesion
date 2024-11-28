@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f56d2250-b4a4-4a09-91f2-b7a73c7eeb75" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +45,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "JUnit.NuestraSenoraDeLaSabiduria.LoginBack in LoginBack.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.LoginBackApplication.executor": "Run",
     "com.codeium.enabled": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feature/create-pipeline-for-project",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/EstudiandoParaSerUnGranIngeniero/moduloInicioSesion/LoginBack/LoginBack",
@@ -111,7 +113,7 @@
       <updated>1730568322478</updated>
       <workItem from="1730568325005" duration="4656000" />
       <workItem from="1730574197147" duration="2754000" />
-      <workItem from="1732758244352" duration="1329000" />
+      <workItem from="1732758244352" duration="1816000" />
     </task>
     <servers />
   </component>

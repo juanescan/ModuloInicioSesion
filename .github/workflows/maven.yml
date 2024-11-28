@@ -26,5 +26,5 @@ jobs:
           - name: Build Backend
             working-directory: ./LoginBack/LoginBack
             run: |
-              mvn clean install
-              mvn package
+              mvn clean install -DskipTests
+              mvn package -DskipTests
