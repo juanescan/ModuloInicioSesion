@@ -6,6 +6,57 @@
   <component name="ChangeListManager">
     <list default="true" id="f56d2250-b4a4-4a09-91f2-b7a73c7eeb75" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/public/logoColegio.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/Componentes/BarraNavegacion.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/Componentes/Boton.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/Componentes/Contenido.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/Componentes/Encabezado.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/Componentes/Login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/Componentes/PaginaPrincipal.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/Componentes/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-ModuloUsuarios/modulousuarios-react/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Controlador/UsuarioLoginControlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Controlador/UsuarioRegistrarControlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/LoginBackApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/Bibliotecario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/BibliotecarioDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/Estudiante.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/EstudianteDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/ResponsableEconomico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/ResponsableEconomicoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/UsuarioDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Repositorio/ResponsableEconomicoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Repositorio/UsuarioRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Servicio/UsuarioServicio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/test/java/NuestraSenoraDeLaSabiduria/LoginBack/BibliotecarioDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/test/java/NuestraSenoraDeLaSabiduria/LoginBack/BibliotecarioTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/test/java/NuestraSenoraDeLaSabiduria/LoginBack/EstudianteDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/test/java/NuestraSenoraDeLaSabiduria/LoginBack/EstudianteTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/test/java/NuestraSenoraDeLaSabiduria/LoginBack/ResponsableEconomicoDTOTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/test/java/NuestraSenoraDeLaSabiduria/LoginBack/ResponsableEconomicoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/test/java/NuestraSenoraDeLaSabiduria/LoginBack/UsuarioLoginControladorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/test/java/NuestraSenoraDeLaSabiduria/LoginBack/UsuarioRegistrarControladorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/test/java/NuestraSenoraDeLaSabiduria/LoginBack/UsuarioServicioTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +79,12 @@
     &quot;assignee&quot;: &quot;marzo245&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/juanescan/ModuloInicioSesion.git",
-    "accountId": "d6141e82-74a6-455c-a058-4c3c331ea160"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/juanescan/ModuloInicioSesion.git&quot;,
+    &quot;accountId&quot;: &quot;d6141e82-74a6-455c-a058-4c3c331ea160&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -53,7 +104,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.LoginBackApplication.executor": "Run",
     "com.codeium.enabled": "true",
-    "git-widget-placeholder": "feature/create-pipeline-for-project",
+    "git-widget-placeholder": "#16 on feature/create-pipeline-for-project",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/EstudiandoParaSerUnGranIngeniero/moduloInicioSesion/LoginBack/LoginBack",
@@ -113,7 +164,8 @@
       <updated>1730568322478</updated>
       <workItem from="1730568325005" duration="4656000" />
       <workItem from="1730574197147" duration="2754000" />
-      <workItem from="1732758244352" duration="1816000" />
+      <workItem from="1732758244352" duration="3367000" />
+      <workItem from="1732819408641" duration="88000" />
     </task>
     <servers />
   </component>
