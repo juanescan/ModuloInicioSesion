@@ -33,6 +33,7 @@ public class UsuarioLoginControlador {
   ) throws Exception {
     String nombreUsuario = requestBody.get("nombreUsuario");
     String contrasena = requestBody.get("contrasena");
+    System.out.println(nombreUsuario + ", " + contrasena);
     return ResponseEntity.ok(
       usuarioServicio.loginUsuario(nombreUsuario, contrasena)
     );

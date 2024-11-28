@@ -39,11 +39,11 @@ function Login() {
           }));
           alert('Inicio de sesión exitoso');
         } else {
-          alert('Error en el inicio de sesión');
+          alert('Error en el inicio de sesión' + response.status);
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('Error en el inicio de sesión');
+        alert('Error en el inicio de sesión' + error);
       }
     } else {
       alert('Por favor, complete el captcha');
