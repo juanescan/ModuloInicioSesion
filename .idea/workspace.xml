@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f56d2250-b4a4-4a09-91f2-b7a73c7eeb75" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/Bibliotecario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/Estudiante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/ResponsableEconomico.java" beforeDir="false" afterPath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/ResponsableEconomico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Modelo/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Servicio/Loguear.java" beforeDir="false" afterPath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Servicio/AutenticacionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Servicio/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/LoginBack/LoginBack/src/main/java/NuestraSenoraDeLaSabiduria/LoginBack/Servicio/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/maven.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +28,12 @@
     &quot;assignee&quot;: &quot;marzo245&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/juanescan/moduloInicioSesion.git&quot;,
-    &quot;accountId&quot;: &quot;b337f84d-58d4-4a8f-9174-4245cdfd9213&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/juanescan/ModuloInicioSesion.git",
+    "accountId": "d6141e82-74a6-455c-a058-4c3c331ea160"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -49,9 +44,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.NuestraSenoraDeLaSabiduria.LoginBack in LoginBack.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.LoginBackApplication.executor": "Run",
     "com.codeium.enabled": "true",
-    "git-widget-placeholder": "FeatureCreacionGeneralClasesYEstructura",
+    "git-widget-placeholder": "feature/create-pipeline-for-project",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/EstudiandoParaSerUnGranIngeniero/moduloInicioSesion/LoginBack/LoginBack",
     "node.js.detected.package.eslint": "true",
@@ -63,7 +66,21 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.NuestraSenoraDeLaSabiduria.LoginBack in LoginBack">
+    <configuration name="NuestraSenoraDeLaSabiduria.LoginBack in LoginBack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="LoginBack" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="NuestraSenoraDeLaSabiduria.LoginBack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="NuestraSenoraDeLaSabiduria.LoginBack" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoginBackApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="LoginBack" />
@@ -72,12 +89,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.NuestraSenoraDeLaSabiduria.LoginBack in LoginBack" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.21565.193" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-IU-243.21565.193" />
       </set>
     </attachedChunks>
   </component>
@@ -91,6 +113,7 @@
       <updated>1730568322478</updated>
       <workItem from="1730568325005" duration="4656000" />
       <workItem from="1730574197147" duration="2754000" />
+      <workItem from="1732758244352" duration="1816000" />
     </task>
     <servers />
   </component>
