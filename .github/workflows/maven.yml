@@ -24,7 +24,6 @@ jobs:
                 java-version: '21'
 
           - name: Build Backend
-            working-directory: ./LoginBack/LoginBack
             run: |
               mvn clean install -DskipTests
               mvn package -DskipTests
